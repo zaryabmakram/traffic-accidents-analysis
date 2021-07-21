@@ -10,3 +10,10 @@ def plot_loss_curve(history, legend=['Train', 'Validation']):
     plt.legend(legend, loc='upper left')
     plt.savefig('assets/loss_plot.png')   # saving as .png
     plt.show()
+    
+def compare_plot(Y_true, Y_pred):
+    plt.plot(Y_true, color='red', label='Real')
+    plt.plot(Y_pred, color='blue', label='Predicted')
+    plt.legend()
+    plt.savefig('assets/compare_plot.png')   # saving as .png
+    plt.show()
