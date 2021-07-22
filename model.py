@@ -2,7 +2,7 @@ from tensorflow.keras.layers import Input, Activation, Dense
 from tensorflow.keras import Model
 import tensorflow.keras.backend as K
 
-def logistic_regression(input_shape):
+def deep_regression(input_shape):
     # clearing keras session
     K.clear_session()
 

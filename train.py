@@ -9,7 +9,7 @@ from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 import argparse
 from joblib import load
 
-from model import logistic_regression
+from model import deep_regression
 from utils import plot_loss_curve, compare_plot
 
 def parse_args():
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     lt = load('assets/label_tranform.joblib')
 
     # loading model
-    model = logistic_regression(input_shape=(7,))
+    model = deep_regression(input_shape=(7,))
 
     # compiling model
     optimizer = tf.keras.optimizers.Adam(
