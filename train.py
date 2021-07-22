@@ -78,7 +78,8 @@ if __name__ == "__main__":
         learning_rate=config.learning_rate
     )
 
-    model.compile(optimizer=optimizer, loss="mse")
+    huber_loss = tf.keras.losses.Huber()
+    model.compile(optimizer=optimizer, loss=huber_loss, metrics=["mae"])
     
     # defining model callbacks
     callbacks = [
@@ -87,10 +88,10 @@ if __name__ == "__main__":
             save_best_only=True, 
             save_weights_only=True, 
             verbose=1, 
-            monitor='val_loss', 
+            monitor='val_mae', 
             mode='min'
         ),
-        tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7, mode='min')
+        tf.keras.callbacks.EarlyStopping(monitor='val_mae', patience=7, mode='min')
     ]
 
     # training model
