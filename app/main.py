@@ -24,9 +24,9 @@ def index():
             data['Accident_type'],
             data['Prev_Year_Value'],
         ]])
-    except:
+    except Exception as e:
         return jsonify({
-            "prediction": "404: Bad Request!"
+            "prediction": f"404: {e}"
         })
 
     # loading tranforms
