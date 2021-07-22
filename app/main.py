@@ -41,7 +41,7 @@ def index():
     model = deep_regression()
 
     # loading trained weights
-    model.load_weights(os.path.join(config.weight_path, 'best_model.h5'))
+    model.load_weights('trained_weights/best_model.h5')
 
     # predicting
     Y_pred = model.predict(X_test)          # model predictions
