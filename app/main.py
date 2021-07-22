@@ -18,8 +18,7 @@ def index():
     try:
         # fetching request data
         data = request.get_json()
-        data = json.loads(data)
-
+        
         # composing numpy array
         X = np.array([[
             data['Category'],
