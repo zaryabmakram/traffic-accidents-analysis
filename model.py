@@ -19,6 +19,6 @@ def deep_regression(input_shape=(7,)):
     X = Dense(units=1, activation=None, name='output')(X)
 
     # create model
-    model = Model(inputs=X_input, outputs=X, name='Logistic_Regression_Model')
+    model = Model(inputs=X_input, outputs=X, name='Deep_Regression_Model')
 
     return model
