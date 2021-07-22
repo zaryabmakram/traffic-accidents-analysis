@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 
-import pickle
+from joblib import dump
 
 SEED = 0
 
@@ -106,14 +106,15 @@ print(f"\tY_valid: {X_valid.shape} - Y_valid: {Y_valid.shape}")
 print(f"\tX_test: {X_test.shape} - Y_test: {Y_test.shape}")
 
 # saving tranformed data and transforms
-pickle.dump({
+dump({
     "train": [X_train, Y_train],
     "valid": [X_valid, Y_valid],
-    "test": [X_test, Y_test]
+    "test": [X_test, Y_test],
+    "orig": Y_test_orig,
 }, open('dataset/transformed_dataset.pkl', 'wb'))
 
-pickle.dump(ft, open('assets/feature_tranform.pkl', 'wb'))
-pickle.dump(lt, open('assets/label_tranform.pkl', 'wb'))
+dump(ft, open('assets/feature_tranform.pkl', 'wb'))
+dump(lt, open('assets/label_tranform.pkl', 'wb'))
 
 # saving df_2021 as a csv 
 df_2021.to_csv('dataset/forecast_data.csv')

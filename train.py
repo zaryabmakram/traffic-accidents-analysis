@@ -60,14 +60,15 @@ if __name__ == "__main__":
     config = parse_args()
     
     # loading data 
-    data = load('dataset/transformed_dataset.joblib')
+    data = load('dataset/transformed_dataset.pkl')
     X_train, Y_train = data["train"]
     X_valid, Y_valid = data["valid"]
     X_test, Y_test = data["test"]
+    Y_test_orig = data["orig"]
 
     # loading data tranforms
-    ft = load('assets/feature_tranform.joblib')
-    lt = load('assets/label_tranform.joblib')
+    ft = load('assets/feature_tranform.pkl')
+    lt = load('assets/label_tranform.pkl')
 
     # loading model
     model = deep_regression(input_shape=(7,))
@@ -116,4 +117,4 @@ if __name__ == "__main__":
     # compare plot 
     Y_pred = model.predict(X_test)          # model predictions 
     Y_pred = lt.inverse_transform(Y_pred)   # tranforming
-    compare_plot(Y_true=Y_test, Y_pred=Y_pred)
+    compare_plot(Y_true=Y_test_orig, Y_pred=Y_pred)
