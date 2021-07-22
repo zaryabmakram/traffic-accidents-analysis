@@ -8,6 +8,7 @@ from model import deep_regression
 from joblib import load
 from flask import Flask, request, jsonify
 
+import json
 
 app = Flask(__name__)
 
@@ -17,6 +18,7 @@ def index():
     try:
         # fetching request data
         data = request.get_json()
+        data = json.loads(data)
 
         # composing numpy array
         X = np.array([[
