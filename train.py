@@ -91,7 +91,8 @@ if __name__ == "__main__":
             monitor='val_mae', 
             mode='min'
         ),
-        tf.keras.callbacks.EarlyStopping(monitor='val_mae', patience=7, mode='min')
+        tf.keras.callbacks.EarlyStopping(monitor='val_mae', patience=7, mode='min'),
+        tf.keras.callbacks.ReduceLROnPlateau(monitor='loss', patience=3)
     ]
 
     # training model
